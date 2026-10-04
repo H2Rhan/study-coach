@@ -128,3 +128,7 @@ Do **not** flood mode 1 with visuals; it steals time from the user's own hands-o
 The skill is self-contained and portable. Keep it that way: **never write a user's absolute paths, real name,
 student ID, or repo name into `SKILL.md` or the files under `references/`, `scripts/`, `assets/`.** All
 machine-specific values belong in the config file, which is generated locally and never shipped.
+
+`assets/images/` holds the publishable README artwork and is not part of the skill's runtime behaviour — do not
+load it while answering a user. `assets/images/_src/` holds the HTML sources it is rendered from; regenerate
+with headless Chrome (`--force-device-scale-factor=2 --window-size=W,H --screenshot=…`) and ship PNG only.
