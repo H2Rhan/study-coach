@@ -1,0 +1,96 @@
+<!doctype html>
+<meta charset="utf-8">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    width:1280px; height:500px; overflow:hidden;
+    font-family:"Segoe UI","Microsoft YaHei",system-ui,sans-serif;
+    background:linear-gradient(155deg,#0f172a 0%,#121f38 100%);
+    color:#e2e8f0; padding:36px 44px;
+  }
+  h2 { font-size:28px; font-weight:750; letter-spacing:-.6px; color:#f8fafc; }
+  .sub { margin-top:7px; margin-bottom:26px; font-size:14px; color:#64748b; }
+  .cols { display:flex; gap:26px; }
+  .tl { flex:1; }
+  .turn { display:flex; gap:13px; margin-bottom:13px; }
+  .who {
+    flex:none; width:74px; text-align:right; font-size:11.5px; font-weight:700;
+    letter-spacing:.9px; padding-top:4px; color:#64748b;
+  }
+  .who.you { color:#93c5fd; }
+  .who.coach { color:#5eead4; }
+  .bub {
+    flex:1; background:#0b1220; border:1px solid #1e293b; border-left:2px solid #334155;
+    border-radius:9px; padding:10px 13px; font-size:13.5px; line-height:1.5; color:#cbd5e1;
+  }
+  .bub.you { border-left-color:#3b82f6; }
+  .bub.coach { border-left-color:#14b8a6; }
+  .bub em { color:#f1f5f9; font-style:normal; font-weight:600; }
+  .bub code {
+    font-family:"Cascadia Mono",Consolas,monospace; font-size:12.5px;
+    background:#101d33; color:#7dd3fc; padding:1px 5px; border-radius:4px;
+  }
+  .bub .warn { color:#fca5a5; }
+  .rules { flex:none; width:352px; }
+  .rule {
+    background:#0a1526; border:1px solid #1e3a8a; border-radius:11px;
+    padding:14px 16px; margin-bottom:12px;
+  }
+  .rule h4 { font-size:14.5px; font-weight:700; color:#93c5fd; margin-bottom:7px; }
+  .rule p { font-size:13px; line-height:1.5; color:#94a3b8; }
+  .rule.no { border-color:#7f1d1d; background:#180d0d; }
+  .rule.no h4 { color:#fca5a5; }
+  .end {
+    margin-top:4px; background:#0a1a12; border:1px solid #14532d; border-radius:11px;
+    padding:13px 16px;
+  }
+  .end h4 { font-size:14.5px; font-weight:700; color:#86efac; margin-bottom:6px; }
+  .end p { font-size:13px; line-height:1.5; color:#94a3b8; }
+</style>
+
+<h2>What a session actually looks like</h2>
+<div class="sub">Mode 1 in practice &mdash; every turn moves exactly one unit, and nothing later is revealed early</div>
+
+<div class="cols">
+  <div class="tl">
+    <div class="turn">
+      <div class="who you">YOU</div>
+      <div class="bub you">Here's my lab assignment (3 pages + a rubric).</div>
+    </div>
+    <div class="turn">
+      <div class="who coach">COACH</div>
+      <div class="bub coach"><em>6 steps.</em> Step 1: create the project and pick the right device. Send me a screenshot of the device list when it's created.</div>
+    </div>
+    <div class="turn">
+      <div class="who you">YOU</div>
+      <div class="bub you">[screenshot]</div>
+    </div>
+    <div class="turn">
+      <div class="who coach">COACH</div>
+      <div class="bub coach"><span class="warn">Wrong device</span> &mdash; you picked <code>xc7a35t</code>. Close the project and switch to <code>xc7a35tcsg324-1</code>, then re-shoot the same panel.</div>
+    </div>
+    <div class="turn">
+      <div class="who coach">COACH</div>
+      <div class="bub coach">Correct now. Step 2: <em>...</em></div>
+    </div>
+  </div>
+
+  <div class="rules">
+    <div class="rule">
+      <h4>It answers with the minimum</h4>
+      <p>Step 1 only. Step 4's method stays hidden until you get there.</p>
+    </div>
+    <div class="rule">
+      <h4>It reads the screenshot</h4>
+      <p>Names the exact thing that's wrong instead of repeating the whole procedure.</p>
+    </div>
+    <div class="rule no">
+      <h4>It will not invent a result</h4>
+      <p>Unverified values become <b style="color:#fca5a5">[UNCONFIRMED]</b> placeholders, never plausible-looking numbers.</p>
+    </div>
+    <div class="end">
+      <h4>All 6 steps done &rarr; report</h4>
+      <p>Written from the evidence you produced along the way, not from imagination.</p>
+    </div>
+  </div>
+</div>

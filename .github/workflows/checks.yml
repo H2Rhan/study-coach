@@ -1,0 +1,55 @@
+name: checks
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  scripts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Compile every script
+        run: python -m compileall -q scripts
+
+      - name: Config loader works with no config present
+        run: python scripts/study_config.py
+
+      - name: First-run setup into a temp location
+        run: |
+          python scripts/setup.py --non-interactive \
+            --config /tmp/sc-config.json \
+            --records-root /tmp/sc-records \
+            --deliverables-dir /tmp/sc-deliverables
+
+      - name: Setup is idempotent and reports the effective config
+        run: |
+          python scripts/setup.py --config /tmp/sc-config.json --show
+          python scripts/setup.py --config /tmp/sc-config.json --non-interactive \
+            --records-root /tmp/sc-records --deliverables-dir /tmp/sc-deliverables
+
+      - name: Sync runs against the local backend without credentials
+        run: python scripts/sync_records.py --config /tmp/sc-config.json --message "ci"
+
+      - name: Publish tool exposes its interface
+        run: python scripts/publish_skill.py --help
+
+      - name: Skill metadata is present
+        run: |
+          test -f SKILL.md
+          grep -q '^name: study-coach$' SKILL.md
+          grep -q '^agent_created: true$' SKILL.md
+
+      - name: No absolute personal paths committed
+        run: |
+          if grep -rn -e 'C:\\Users' -e 'C:/Users' \
+               --include='*.md' --include='*.py' --include='*.json' --include='*.html' . ; then
+            echo "::error::an absolute personal path is committed; move it into the generated config"
+            exit 1
+          fi
+          echo "no absolute personal paths found"

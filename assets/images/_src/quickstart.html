@@ -1,0 +1,61 @@
+<!doctype html>
+<meta charset="utf-8">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    width:1280px; height:300px; overflow:hidden;
+    font-family:"Segoe UI","Microsoft YaHei",system-ui,sans-serif;
+    background:linear-gradient(140deg,#0f172a 0%,#131f37 100%);
+    color:#e2e8f0; padding:36px 44px;
+  }
+  h2 { font-size:27px; font-weight:750; letter-spacing:-.6px; color:#f8fafc; margin-bottom:24px; }
+  .row { display:flex; gap:16px; }
+  .s {
+    flex:1; background:#0b1220; border:1px solid #1e293b; border-radius:12px;
+    padding:17px 19px; position:relative;
+  }
+  .s .n {
+    position:absolute; top:-1px; left:-1px; width:34px; height:34px; border-radius:12px 0 12px 0;
+    display:flex; align-items:center; justify-content:center;
+    font-size:14px; font-weight:800; color:#0f172a; background:#38bdf8;
+  }
+  .s h3 { font-size:15px; font-weight:700; color:#f1f5f9; margin:4px 0 11px 34px; letter-spacing:.2px; text-transform:uppercase; }
+  .cmd {
+    font-family:"Cascadia Mono",Consolas,monospace; font-size:12.5px; line-height:1.65;
+    color:#7dd3fc; background:#08111f; border:1px solid #14243c; border-radius:7px;
+    padding:10px 12px; word-break:break-all;
+  }
+  .cmd .c { color:#475569; }
+  .quote { font-size:14.5px; line-height:1.6; color:#cbd5e1; font-style:italic; }
+  .quote:before { content:"“"; color:#14b8a6; font-size:19px; font-style:normal; }
+  .quote:after { content:"”"; color:#14b8a6; font-size:19px; font-style:normal; }
+  .s.a1 { border-color:#1e3a8a; } .s.a1 .n { background:#60a5fa; }
+  .s.a2 { border-color:#6d28d9; } .s.a2 .n { background:#a78bfa; }
+  .s.a3 { border-color:#14532d; } .s.a3 .n { background:#4ade80; }
+  .foot { margin-top:20px; font-size:13px; color:#64748b; }
+  .foot b { color:#94a3b8; font-weight:600; }
+</style>
+
+<h2>Three commands, then just talk</h2>
+
+<div class="row">
+  <div class="s a1">
+    <div class="n">1</div>
+    <h3>Install</h3>
+    <div class="cmd">git clone H2Rhan/study-coach \<br>&nbsp;&nbsp;~/.workbuddy/skills/study-coach</div>
+  </div>
+  <div class="s a2">
+    <div class="n">2</div>
+    <h3>Configure</h3>
+    <div class="cmd">python scripts/setup.py<br><span class="c"># writes config, makes folders</span></div>
+  </div>
+  <div class="s a3">
+    <div class="n">3</div>
+    <h3>Use</h3>
+    <div class="quote">Here's my assignment &mdash; walk me through it.</div>
+  </div>
+</div>
+
+<div class="foot">
+  No personal data ships with the skill &mdash; <b>no paths, no name, no repo</b>. Everything machine-specific is generated locally by step 2.
+</div>

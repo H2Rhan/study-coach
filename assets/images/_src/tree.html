@@ -1,0 +1,120 @@
+<!doctype html>
+<meta charset="utf-8">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    width:1280px; height:560px; overflow:hidden;
+    font-family:"Segoe UI","Microsoft YaHei",system-ui,sans-serif;
+    background:#0f172a; color:#e2e8f0; padding:36px 44px;
+  }
+  h2 { font-size:28px; font-weight:750; letter-spacing:-.6px; color:#f8fafc; }
+  .sub { margin-top:7px; margin-bottom:24px; font-size:14px; color:#64748b; }
+  .cols { display:flex; gap:34px; }
+  .tree { flex:none; width:660px; }
+  .node {
+    border-radius:11px; border:1px solid; padding:13px 17px; position:relative;
+  }
+  .node .t { font-size:16px; font-weight:700; }
+  .node .d { font-size:12.5px; margin-top:5px; line-height:1.45; }
+  .l4 { background:#0d2a1b; border-color:#15803d; }
+  .l4 .t { color:#86efac; }
+  .l4 .d { color:#7f9e8a; }
+  .l3 { background:#12203a; border-color:#1d4ed8; }
+  .l3 .t { color:#93c5fd; }
+  .l3 .d { color:#7b8ea8; }
+  .l2 { background:#1d1a2e; border-color:#6d28d9; }
+  .l2 .t { color:#c4b5fd; }
+  .l2 .d { color:#8b86a3; }
+  .l1 { background:#241a12; border-color:#b45309; }
+  .l1 .t { color:#fcd34d; }
+  .l1 .d { color:#9c8a70; }
+  .tag {
+    position:absolute; top:12px; right:15px; font-size:10.5px; font-weight:700;
+    letter-spacing:1px; color:#64748b;
+  }
+  .gate {
+    display:flex; align-items:center; gap:10px; padding:7px 0 7px 20px;
+    font-size:12.5px; color:#64748b;
+  }
+  .gate .arrow { color:#475569; font-size:15px; }
+  .gate .chip {
+    font-size:11px; font-weight:700; letter-spacing:.6px; padding:3px 10px;
+    border-radius:999px; border:1px solid #334155; color:#94a3b8; background:#0b1220;
+  }
+  .side { flex:1; }
+  .card {
+    background:#0b1220; border:1px solid #1e293b; border-radius:11px;
+    padding:15px 17px; margin-bottom:13px;
+  }
+  .card h4 { font-size:14.5px; font-weight:700; color:#f1f5f9; margin-bottom:8px; }
+  .card ul { list-style:none; }
+  .card li {
+    font-size:13px; line-height:1.7; color:#94a3b8; padding-left:16px; position:relative;
+  }
+  .card li:before {
+    content:"›"; position:absolute; left:2px; color:#38bdf8; font-weight:700;
+  }
+  .prereq { border-color:#b45309; background:#181208; }
+  .prereq h4 { color:#fcd34d; }
+  .prereq li:before { color:#fcd34d; }
+  .fail { border-color:#7f1d1d; background:#170c0c; }
+  .fail h4 { color:#fca5a5; }
+  .fail li:before { color:#fca5a5; }
+</style>
+
+<h2>Ask for a breakdown, get a dependency tree</h2>
+<div class="sub">Mode 3 &mdash; you climb one layer per turn; a failed check sends you back down, not forward</div>
+
+<div class="cols">
+  <div class="tree">
+    <div class="node l4">
+      <div class="tag">TARGET</div>
+      <div class="t">Virtual memory</div>
+      <div class="d">The thing you actually wanted explained</div>
+    </div>
+    <div class="gate"><span class="arrow">&uarr;</span><span class="chip">gate: pass layer 3 check</span></div>
+    <div class="node l3">
+      <div class="tag">LAYER 3</div>
+      <div class="t">TLB &amp; page faults</div>
+      <div class="d">What happens on a miss, and why the walk is cached</div>
+    </div>
+    <div class="gate"><span class="arrow">&uarr;</span><span class="chip">gate: pass layer 2 check</span></div>
+    <div class="node l2">
+      <div class="tag">LAYER 2</div>
+      <div class="t">Paging &amp; page tables</div>
+      <div class="d">How a virtual address becomes a physical one</div>
+    </div>
+    <div class="gate"><span class="arrow">&uarr;</span><span class="chip">gate: pass layer 1 check</span></div>
+    <div class="node l1">
+      <div class="tag">LAYER 1</div>
+      <div class="t">Address space &amp; pointers</div>
+      <div class="d">The prerequisite &mdash; checked before anything above it</div>
+    </div>
+  </div>
+
+  <div class="side">
+    <div class="card prereq">
+      <h4>Prerequisite check comes first</h4>
+      <ul>
+        <li>&ldquo;Are you comfortable with layer 1 and 2?&rdquo;</li>
+        <li>A missing prerequisite gets filled before the target is touched &mdash; otherwise nothing above it lands.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Every layer answers the same four things</h4>
+      <ul>
+        <li>What it is, in one sentence</li>
+        <li>Which layer it sits in, and what it depends on</li>
+        <li>What breaks without it</li>
+        <li>What it is most often confused with</li>
+      </ul>
+    </div>
+    <div class="card fail">
+      <h4>Fail the check and it stops</h4>
+      <ul>
+        <li>Two fails in a row &rarr; drop a layer and repair the prerequisite</li>
+        <li>&ldquo;I know this, skip it&rdquo; is respected but recorded as <b style="color:#fca5a5">unverified</b></li>
+      </ul>
+    </div>
+  </div>
+</div>

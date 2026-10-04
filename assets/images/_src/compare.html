@@ -1,0 +1,81 @@
+<!doctype html>
+<meta charset="utf-8">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    width:1280px; height:520px; overflow:hidden;
+    font-family:"Segoe UI","Microsoft YaHei",system-ui,sans-serif;
+    background:#0f172a; color:#e2e8f0; padding:34px 44px;
+  }
+  h2 { font-size:28px; font-weight:750; letter-spacing:-.6px; color:#f8fafc; }
+  .sub { margin-top:7px; margin-bottom:22px; font-size:14px; color:#64748b; }
+  table { width:100%; border-collapse:separate; border-spacing:0 7px; }
+  th {
+    font-size:12px; font-weight:700; letter-spacing:1.1px; text-transform:uppercase;
+    text-align:left; padding:0 16px 6px; color:#64748b;
+  }
+  th.g { color:#f87171; }
+  th.c { color:#2dd4bf; }
+  td {
+    background:#0b1220; border-top:1px solid #1e293b; border-bottom:1px solid #1e293b;
+    padding:13px 16px; font-size:13.5px; line-height:1.5; vertical-align:middle;
+  }
+  td:first-child {
+    width:172px; border-left:1px solid #1e293b; border-radius:9px 0 0 9px;
+    font-size:12px; font-weight:700; letter-spacing:.8px; text-transform:uppercase; color:#94a3b8;
+    background:#0e1729;
+  }
+  td:nth-child(2) { width:492px; color:#a8a29e; }
+  td:last-child {
+    border-right:1px solid #1e293b; border-radius:0 9px 9px 0;
+    color:#e2e8f0; border-left:2px solid #14b8a6;
+  }
+  code {
+    font-family:"Cascadia Mono",Consolas,monospace; font-size:12.5px;
+    background:#101d33; color:#7dd3fc; padding:1px 5px; border-radius:4px;
+  }
+  .x { color:#f87171; font-weight:600; }
+  .v { color:#34d399; font-weight:600; }
+  .foot { margin-top:18px; font-size:13px; color:#64748b; }
+  .foot b { color:#94a3b8; }
+</style>
+
+<h2>Same request, different behaviour</h2>
+<div class="sub">The difference is in what it refuses to do</div>
+
+<table>
+  <tr>
+    <th>&nbsp;</th>
+    <th class="g">A generic assistant</th>
+    <th class="c">study-coach</th>
+  </tr>
+  <tr>
+    <td>Homework</td>
+    <td>Dumps a complete solution you can copy without understanding any of it</td>
+    <td>Gives step 1 only, waits for your screenshot, and keeps step 4 hidden until you get there</td>
+  </tr>
+  <tr>
+    <td>Wrong answer</td>
+    <td><span class="x">&ldquo;The answer is B.&rdquo;</span></td>
+    <td><span class="v">&ldquo;You mixed up X with Y.</span> B, because&hellip; and the test point here is&hellip;&rdquo;</td>
+  </tr>
+  <tr>
+    <td>Correct answer</td>
+    <td>Three paragraphs and a table, for a one-line multiple-choice question</td>
+    <td><code>2&ndash;3 sentences</code> &mdash; why it's right, plus one easily-confused neighbour</td>
+  </tr>
+  <tr>
+    <td>A new topic</td>
+    <td>A wall of text at the same depth throughout</td>
+    <td>A dependency tree, then one layer per turn &mdash; and it stops if your check fails</td>
+  </tr>
+  <tr>
+    <td>Before an exam</td>
+    <td>&ldquo;Here's a summary.&rdquo;</td>
+    <td>Skeleton &rarr; mock test with answers kept separate &rarr; score breakdown &rarr; targeted review list</td>
+  </tr>
+</table>
+
+<div class="foot">
+  Unverified facts become <b>[UNCONFIRMED: …]</b> placeholders. <b>Results are never invented</b> &mdash; not a waveform, not a page count, not a run time.
+</div>

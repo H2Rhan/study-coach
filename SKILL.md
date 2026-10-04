@@ -15,7 +15,7 @@ description: |
   configuration step (scripts/setup.py); see references/setup.md.
 agent_created: true
 category: capability
-version: "2.0.0"
+version: "2.1.0"
 tags: [homework-guide, mistake-notebook, knowledge-breakdown, exam-review, mock-test, screenshot-guided, study-companion, configurable]
 ---
 
