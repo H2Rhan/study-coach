@@ -1,0 +1,89 @@
+<!doctype html>
+<meta charset="utf-8">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    width:1280px; height:420px; overflow:hidden;
+    font-family:"Segoe UI","Microsoft YaHei",system-ui,sans-serif;
+    background:linear-gradient(160deg,#0f172a 0%,#111d33 100%);
+    color:#e2e8f0; padding:38px 46px;
+  }
+  .head { margin-bottom:30px; }
+  .head h2 { font-size:29px; font-weight:750; letter-spacing:-.6px; color:#f8fafc; }
+  .head span { display:block; margin-top:7px; font-size:14px; color:#64748b; }
+  .flow { display:flex; align-items:stretch; gap:0; }
+  .step {
+    flex:1; background:#0b1220; border:1px solid #1e293b; border-radius:12px;
+    padding:16px 15px; position:relative; min-height:132px;
+  }
+  .step .i {
+    font-family:"Cascadia Mono",Consolas,monospace; font-size:12px; font-weight:700;
+    color:#38bdf8; letter-spacing:1px;
+  }
+  .step h4 { font-size:15.5px; font-weight:650; margin:9px 0 8px; color:#f1f5f9; letter-spacing:-.1px; }
+  .step p { font-size:13px; line-height:1.55; color:#94a3b8; }
+  .step code {
+    font-family:"Cascadia Mono",Consolas,monospace; font-size:12px;
+    color:#7dd3fc; background:#0f1e33; padding:1px 5px; border-radius:4px;
+  }
+  .arrow {
+    flex:none; width:38px; display:flex; align-items:center; justify-content:center;
+    color:#64748b; font-size:26px; font-weight:700; padding-bottom:6px;
+  }
+  .step.hi { border-color:#1d4ed8; background:#0d1a30; box-shadow:0 0 0 1px #1d4ed833 inset; }
+  .step.hi .i { color:#60a5fa; }
+  .foot {
+    margin-top:26px; display:flex; align-items:center; gap:12px;
+    font-size:13.5px; color:#94a3b8;
+  }
+  .pill {
+    font-size:12.5px; font-weight:600; padding:5px 13px; border-radius:999px;
+    border:1px solid #334155; background:#0b1220; color:#cbd5e1;
+  }
+  .pill.on { border-color:#1d4ed8; color:#93c5fd; background:#0d1a30; }
+  .foot .sep { color:#334155; }
+</style>
+
+<div class="head">
+  <h2>Progress doesn't get lost between sessions</h2>
+  <span>Records are read at the start of a session and appended at the end of a cycle &mdash; never once per question</span>
+</div>
+
+<div class="flow">
+  <div class="step">
+    <div class="i">01 · START</div>
+    <h4>Read the progress file</h4>
+    <p>Picks up <code>progress/&lt;course&gt;.md</code> and states where you stopped. You never re-explain your own progress.</p>
+  </div>
+  <div class="arrow">&rarr;</div>
+  <div class="step">
+    <div class="i">02 · WORK</div>
+    <h4>One unit at a time</h4>
+    <p>One step, one question, or one layer &mdash; confirmed before moving on.</p>
+  </div>
+  <div class="arrow">&rarr;</div>
+  <div class="step">
+    <div class="i">03 · CYCLE ENDS</div>
+    <h4>Append the facts</h4>
+    <p>Date, item, result, note. Incremental edits only &mdash; your own writing is never overwritten.</p>
+  </div>
+  <div class="arrow">&rarr;</div>
+  <div class="step hi">
+    <div class="i">04 · NORMALIZE</div>
+    <h4>CRLF &rarr; LF</h4>
+    <p>Byte-level rewrite first. The pusher uploads raw working-tree bytes, so skipping this writes CRLF into the remote.</p>
+  </div>
+  <div class="arrow">&rarr;</div>
+  <div class="step">
+    <div class="i">05 · SYNC</div>
+    <h4>Save it</h4>
+    <p>Stays in a local folder, or also pushes to your own private repo over the REST API.</p>
+  </div>
+</div>
+
+<div class="foot">
+  <span class="pill on">backend: local</span>
+  <span class="pill">backend: github</span>
+  <span class="sep">|</span>
+  <span>Location comes from <b style="color:#cbd5e1">your config</b> &mdash; the skill itself carries no paths, no name, no repo.</span>
+</div>

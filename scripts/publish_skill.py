@@ -24,7 +24,8 @@ sys.path.insert(0, str(HERE))
 
 import github_push  # noqa: E402
 
-TEXT_SUFFIXES = {".md", ".py", ".json", ".txt", ".yml", ".yaml", ".toml"}
+TEXT_SUFFIXES = {".md", ".py", ".json", ".txt", ".yml", ".yaml", ".toml", ".html"}
+BINARY_SUFFIXES = {".png", ".jpg", ".jpeg", ".webp", ".gif", ".svg", ".pdf"}
 ALWAYS_INCLUDE = {".gitignore", "LICENSE", "LICENCE"}
 SKIP_DIRS = {"__pycache__", ".git", ".venv", "node_modules"}
 
@@ -35,16 +36,19 @@ def collect() -> list[str]:
         dirnames[:] = [d for d in dirnames if d not in SKIP_DIRS]
         for name in filenames:
             path = Path(dirpath) / name
-            if path.suffix.lower() not in TEXT_SUFFIXES and name not in ALWAYS_INCLUDE:
+            suffix = path.suffix.lower()
+            is_binary = suffix in BINARY_SUFFIXES
+            if not is_binary and suffix not in TEXT_SUFFIXES and name not in ALWAYS_INCLUDE:
                 continue
             rel = path.relative_to(SKILL).as_posix()
             if rel == "config.json":
                 continue
-            raw = path.read_bytes()
-            fixed = raw.replace(b"\r\n", b"\n")
-            if fixed != raw:
-                path.write_bytes(fixed)
-                print(f"normalized CRLF: {rel}")
+            if not is_binary:
+                raw = path.read_bytes()
+                fixed = raw.replace(b"\r\n", b"\n")
+                if fixed != raw:
+                    path.write_bytes(fixed)
+                    print(f"normalized CRLF: {rel}")
             files.append(rel)
     return sorted(files)
 

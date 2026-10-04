@@ -1,0 +1,87 @@
+<!doctype html>
+<meta charset="utf-8">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    width:1280px; height:660px; overflow:hidden;
+    font-family:"Segoe UI","Microsoft YaHei",system-ui,sans-serif;
+    background:#0f172a; color:#e2e8f0; padding:40px 44px;
+  }
+  .head { display:flex; align-items:baseline; gap:14px; margin-bottom:26px; }
+  .head h2 { font-size:29px; font-weight:750; letter-spacing:-.6px; color:#f8fafc; }
+  .head span { font-size:14px; color:#64748b; letter-spacing:.4px; }
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  .card {
+    border-radius:14px; padding:20px 22px; border:1px solid; position:relative;
+    min-height:238px;
+  }
+  .card .n {
+    position:absolute; top:18px; right:20px; font-size:44px; font-weight:800;
+    line-height:1; opacity:.18; letter-spacing:-2px;
+  }
+  .card h3 { font-size:19px; font-weight:700; margin-bottom:12px; letter-spacing:-.2px; }
+  .row { display:flex; font-size:14.5px; line-height:1.55; margin-bottom:6px; color:#cbd5e1; }
+  .row .k { width:78px; flex:none; color:#64748b; font-size:13px; }
+  .row .v { flex:1; }
+  .trig {
+    margin-top:12px; font-family:"Cascadia Mono",Consolas,monospace; font-size:13px;
+    padding:9px 12px; border-radius:8px; background:#0b1220; border:1px solid #1e293b;
+    color:#94a3b8; line-height:1.5;
+  }
+  .trig b { font-weight:600; }
+  .a1 { background:#1a0f0fdd; border-color:#7f1d1d; }
+  .a1 h3 { color:#fca5a5; }
+  .a1 .trig b { color:#fca5a5; }
+  .a2 { background:#0f1526dd; border-color:#1e3a8a; }
+  .a2 h3 { color:#93c5fd; }
+  .a2 .trig b { color:#93c5fd; }
+  .a3 { background:#0a1a12dd; border-color:#14532d; }
+  .a3 h3 { color:#86efac; }
+  .a3 .trig b { color:#86efac; }
+  .a4 { background:#1a0f0add; border-color:#7c2d12; }
+  .a4 h3 { color:#fdba74; }
+  .a4 .trig b { color:#fdba74; }
+</style>
+<div class="head">
+  <h2>Four modes, one skill</h2>
+  <span>routed by intent &mdash; no commands to remember</span>
+</div>
+<div class="grid">
+
+  <div class="card a1">
+    <div class="n">01</div>
+    <h3>Homework guide</h3>
+    <div class="row"><span class="k">You give</span><span class="v">An assignment &mdash; PDF, screenshot, or DOCX</span></div>
+    <div class="row"><span class="k">It does</span><span class="v">Splits it into 3&ndash;8 steps, explains <i>only</i> the current step, checks the screenshot you send back, and refuses to spoil later steps</span></div>
+    <div class="row"><span class="k">You get</span><span class="v">A submittable report built from evidence you actually produced</span></div>
+    <div class="trig"><b>&gt;</b> Here's my lab assignment, walk me through it</div>
+  </div>
+
+  <div class="card a2">
+    <div class="n">02</div>
+    <h3>Quiz grading</h3>
+    <div class="row"><span class="k">You give</span><span class="v">A problem set, then short messages like <code>2.3 12 C</code></span></div>
+    <div class="row"><span class="k">It does</span><span class="v">Indexes every question first, grades each answer independently, 2&ndash;3 sentences when right, real error analysis when wrong</span></div>
+    <div class="row"><span class="k">You get</span><span class="v">A mistake notebook &mdash; short enough to re-read the night before</span></div>
+    <div class="trig"><b>&gt;</b> 2.3 12 C  <span style="color:#475569">(one question per line, no essays back)</span></div>
+  </div>
+
+  <div class="card a3">
+    <div class="n">03</div>
+    <h3>Knowledge breakdown</h3>
+    <div class="row"><span class="k">You give</span><span class="v">A topic you don't really understand yet</span></div>
+    <div class="row"><span class="k">It does</span><span class="v">Builds a dependency tree of foundational layers, then teaches one layer per turn with a mini-check before advancing</span></div>
+    <div class="row"><span class="k">You get</span><span class="v">A full-tree cheat sheet plus a one-page reference table</span></div>
+    <div class="trig"><b>&gt;</b> Break down virtual memory for me</div>
+  </div>
+
+  <div class="card a4">
+    <div class="n">04</div>
+    <h3>Review &amp; mock test</h3>
+    <div class="row"><span class="k">You give</span><span class="v">Slides, lecture notes, past papers</span></div>
+    <div class="row"><span class="k">It does</span><span class="v">Inventories the material and names what's missing, builds a knowledge skeleton, or issues mock tests with answers kept separate</span></div>
+    <div class="row"><span class="k">You get</span><span class="v">Summary doc, score breakdown, targeted review plan</span></div>
+    <div class="trig"><b>&gt;</b> Here are all the slides &mdash; review me, then quiz me</div>
+  </div>
+
+</div>

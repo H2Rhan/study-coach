@@ -1,4 +1,4 @@
-# study-coach
+![study-coach — a four-mode study companion skill for AI agents](assets/images/banner.png)
 
 A **four-mode study companion skill** for AI coding agents (Claude Code / WorkBuddy and anything else that
 reads the `SKILL.md` convention). It turns an agent from "answer machine" into a coach: it walks you through
@@ -10,6 +10,8 @@ config file that `scripts/setup.py` generates.
 
 ## The four modes
 
+![Four modes, one skill](assets/images/modes.png)
+
 | Mode | You give it | What it does | You end up with |
 |---|---|---|---|
 | **1 · Homework guide** | An assignment (PDF / image / DOCX) | Splits it into 3–8 steps, explains only the current step, checks the screenshot you send back, and refuses to spoil later steps | A submittable report (DOCX/PDF), built from the evidence you actually produced |
@@ -20,6 +22,15 @@ config file that `scripts/setup.py` generates.
 Cross-cutting behaviour: it reads its source material before speaking, never fabricates results (unverified
 values become placeholders), always advances one step at a time, and syncs progress to a folder or private
 GitHub repo so a later session can pick up where you left off.
+
+## Records that survive between sessions
+
+![Records flow](assets/images/flow.png)
+
+`progress/`, `mistake-books/`, and `summaries/` live under `records.local_root`. A session reads the matching
+progress file before saying anything, and appends to it when a cycle ends — never once per question, which would
+produce dozens of trivial commits. Set `records.backend` to `github` to also push to your own private repo;
+`local` (the default) keeps everything on disk.
 
 ## Install
 
@@ -101,6 +112,7 @@ assets/
   config.example.json           documented config example
   records-repo-README.md        README seeded into your records folder
   templates/                    progress / mistake book / summary, in Chinese and English
+  images/                       README artwork, with the HTML sources under images/_src/
 ```
 
 All scripts use the Python standard library only. Optional companion skills (polished Word generation, an
