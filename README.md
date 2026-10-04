@@ -96,6 +96,7 @@ scripts/
   study_config.py               config loader (stdlib only)
   sync_records.py               discover + normalize + sync records
   github_push.py                self-contained GitHub REST pusher (stdlib only)
+  publish_skill.py              maintainer tool: push this folder to its own repo
 assets/
   config.example.json           documented config example
   records-repo-README.md        README seeded into your records folder
