@@ -1,0 +1,28 @@
+{
+  "output_language": "auto",
+
+  "records": {
+    "backend": "local",
+    "local_root": "~/study-records",
+    "repo": "",
+    "branch": "main",
+    "remote_visibility": "private"
+  },
+
+  "deliverables": {
+    "dir": "auto",
+    "formats": ["docx"],
+    "submission_formats": ["docx", "pdf"]
+  },
+
+  "identity": {
+    "student_id": "",
+    "name": "",
+    "filename_pattern": "{student_id}_{name}_{assignment}.{ext}"
+  },
+
+  "tone": {
+    "colloquial": true,
+    "no_padding": true
+  }
+}
